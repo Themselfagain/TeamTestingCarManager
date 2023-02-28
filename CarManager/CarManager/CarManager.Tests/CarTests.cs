@@ -17,6 +17,17 @@ namespace CarManager.Tests
         public void ConstructorShouldInitializeCorrectly()
         {
             //public Car(string make, string model, double fuelConsumption, double fuelCapacity)
+        
+        
+            [SetUp]
+            public void Setup()
+            {
+            }
+
+            [Test]
+            public void ConstructorShouldInitializeCorrectly()
+            {
+            //public Car(string make, string model, double fuelConsumption, double fuelCapacity);
             string make = "aaa";
             string model = "bbb";
             double fuelConsumption = 5;
@@ -41,7 +52,6 @@ namespace CarManager.Tests
             double fuelCapacity = 40;
 
             Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
-
         }
 
         [Test]
@@ -63,8 +73,6 @@ namespace CarManager.Tests
         {
             //TO DO
         }
-
-        //az
         [Test]
         public void FuelCapacityShouldThrowArgExWhenIsZero()
         {
@@ -73,19 +81,72 @@ namespace CarManager.Tests
             string model = "aaa";
             double fuelConsumption = 5;
             double fuelCapacity = 0;
+            }
+            [Test]
+            public void MakeShouldThrowArgExWhenNameIsNull()
+            {
+            string make = null;
+            string model = "aaa";
+            double fuelConsumption = 5;
+            double fuelCapacity = 40;
+
+            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+
+
+            //TO DO
+        }
+        [Test]
+            public void FuelConsumptionShouldThrowArgExWhenIsBellowZero()
+            {
+
+
+            string make = "aaa";
+            string model = "bbb";
+            double fuelConsumption = 5;
+            double fuelCapacity = -40;
+
+            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+        }
+
+            [Test]
+                //TO DO
+            }
+        [Test]
+            public void FuelConsumptionShouldThrowArgExWhenIsZero()
+            {
+             string make = "aaa";
+             string model = "bbb";
+             double fuelConsumption = 0;
+             double fuelCapacity = 40;
+
+             Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+
+            }
+        [Test]
+            public void FuelCapacityShouldThrowArgExWhenIsZero()
+            {
+                //TO DO
+            }
 
             //Act and Assert
             Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
         }
-
     [Test]
     public void FuelCapacityShouldThrowArgExWhenIsBellowZero()
     {
         //TO DO
     }
+           
+            [TestCase] //ГўГ±ГЁГ·ГЄГЁ Г±Г«ГіГ·Г ГЁ, ГЇГ°ГЁ ГЄГ®ГЁГІГ® Г±ГҐ ГµГўГєГ°Г«Гї ГЁГ§ГЄГ«ГѕГ·ГҐГ­ГЁГҐ
+            //TO DO
+            public void ValidateAllProperties(string make, string model, double fuelConsumption, double fuelCapacity)
+            {
+                //TO DO
+            }
 
 
-    [TestCase] //всички случаи, при които се хвърля изключение
+
+    [TestCase] //пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ, пїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅ пїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅ пїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅпїЅ
                //TO DO
     public void ValidateAllProperties(string make, string model, double fuelConsumption, double fuelCapacity)
     {
