@@ -58,20 +58,27 @@ namespace CarManager.Tests
 
             //TO DO
         }
-        //DevB
         [Test]
             public void FuelConsumptionShouldThrowArgExWhenIsBellowZero()
             {
 
+
+            string make = "aaa";
+            string model = "bbb";
+            double fuelConsumption = 5;
+            double fuelCapacity = -40;
+
+            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+        }
+
+            [Test]
                 //TO DO
             }
-        //DevC
         [Test]
             public void FuelConsumptionShouldThrowArgExWhenIsZero()
             {
                 //TO DO
             }
-        //DevD
         [Test]
             public void FuelCapacityShouldThrowArgExWhenIsZero()
             {
@@ -85,7 +92,7 @@ namespace CarManager.Tests
             }
 
            
-            [TestCase] //всички случаи, при които се хвърля изключение
+            [TestCase] //ГўГ±ГЁГ·ГЄГЁ Г±Г«ГіГ·Г ГЁ, ГЇГ°ГЁ ГЄГ®ГЁГІГ® Г±ГҐ ГµГўГєГ°Г«Гї ГЁГ§ГЄГ«ГѕГ·ГҐГ­ГЁГҐ
             //TO DO
             public void ValidateAllProperties(string make, string model, double fuelConsumption, double fuelCapacity)
             {
