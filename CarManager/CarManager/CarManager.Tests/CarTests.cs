@@ -17,7 +17,7 @@ namespace CarManager.Tests
             [Test]
             public void ConstructorShouldInitializeCorrectly()
             {
-            public Car(string make, string model, double fuelConsumption, double fuelCapacity)
+            //public Car(string make, string model, double fuelConsumption, double fuelCapacity);
             string make = "aaa";
             string model = "bbb";
             double fuelConsumption = 5;
@@ -48,11 +48,18 @@ namespace CarManager.Tests
             [Test]
             public void MakeShouldThrowArgExWhenNameIsNull()
             {
+            string make = null;
+            string model = "aaa";
+            double fuelConsumption = 5;
+            double fuelCapacity = 40;
 
-                //TO DO
-            }
-          //DevB
-         [Test]
+            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+
+
+            //TO DO
+        }
+        //DevB
+        [Test]
             public void FuelConsumptionShouldThrowArgExWhenIsBellowZero()
             {
 
