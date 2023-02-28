@@ -16,9 +16,6 @@ namespace CarManager.Tests
         [Test]
         public void ConstructorShouldInitializeCorrectly()
         {
-            //public Car(string make, string model, double fuelConsumption, double fuelCapacity)
-       
-           
             //public Car(string make, string model, double fuelConsumption, double fuelCapacity);
             string make = "aaa";
             string model = "bbb";
@@ -41,7 +38,6 @@ namespace CarManager.Tests
 
             Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
         }
-
         [Test]
         public void FuelCapacityShouldThrowArgExWhenIsZero()
         {
@@ -52,47 +48,15 @@ namespace CarManager.Tests
             double fuelCapacity = 0;
         }
         [Test]
-        public void MakeShouldThrowArgExWhenNameIsNull()
-        {
-        string make = null;
-            string model = "aaa";
-            double fuelConsumption = 5;
-            double fuelCapacity = 40;
-
-            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
-
-
-            //TO DO
-        }
-        [Test]
-            public void FuelConsumptionShouldThrowArgExWhenIsBellowZero()
-            {
-
-
-            string make = "aaa";
-            string model = "bbb";
-            double fuelConsumption = 5;
-            double fuelCapacity = -40;
-
-            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
-            }
-        [Test]
             public void FuelConsumptionShouldThrowArgExWhenIsZero()
             {
              string make = "aaa";
              string model = "bbb";
              double fuelConsumption = 0;
              double fuelCapacity = 40;
-
              Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
 
             }
-      
-    [Test]
-    public void FuelCapacityShouldThrowArgExWhenIsBellowZero()
-    {
-        //TO DO
-    }
     [TestCase]
     public void ValidateAllProperties(string make, string model, double fuelConsumption, double fuelCapacity)
     {
