@@ -17,7 +17,7 @@ namespace CarManager.Tests
             [Test]
             public void ConstructorShouldInitializeCorrectly()
             {
-            //public Car(string make, string model, double fuelConsumption, double fuelCapacity)
+            //public Car(string make, string model, double fuelConsumption, double fuelCapacity);
             string make = "aaa";
             string model = "bbb";
             double fuelConsumption = 5;
@@ -44,17 +44,24 @@ namespace CarManager.Tests
             Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
 
             }
-
+            //DevA
             [Test]
             public void MakeShouldThrowArgExWhenNameIsNull()
             {
+            string make = null;
+            string model = "aaa";
+            double fuelConsumption = 5;
+            double fuelCapacity = 40;
 
-                //TO DO
-            }
+            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
 
-            [Test]
+
+            //TO DO
+        }
+        [Test]
             public void FuelConsumptionShouldThrowArgExWhenIsBellowZero()
             {
+
 
             string make = "aaa";
             string model = "bbb";
@@ -65,12 +72,14 @@ namespace CarManager.Tests
         }
 
             [Test]
+                //TO DO
+            }
+        [Test]
             public void FuelConsumptionShouldThrowArgExWhenIsZero()
             {
                 //TO DO
             }
-
-            [Test]
+        [Test]
             public void FuelCapacityShouldThrowArgExWhenIsZero()
             {
                 //TO DO
@@ -83,7 +92,7 @@ namespace CarManager.Tests
             }
 
            
-            [TestCase] //âñè÷êè ñëó÷àè, ïðè êîèòî ñå õâúðëÿ èçêëþ÷åíèå
+            [TestCase] //Ã¢Ã±Ã¨Ã·ÃªÃ¨ Ã±Ã«Ã³Ã·Ã Ã¨, Ã¯Ã°Ã¨ ÃªÃ®Ã¨Ã²Ã® Ã±Ã¥ ÃµÃ¢ÃºÃ°Ã«Ã¿ Ã¨Ã§ÃªÃ«Ã¾Ã·Ã¥Ã­Ã¨Ã¥
             //TO DO
             public void ValidateAllProperties(string make, string model, double fuelConsumption, double fuelCapacity)
             {
