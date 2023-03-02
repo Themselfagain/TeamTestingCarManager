@@ -35,7 +35,6 @@ namespace CarManager.Tests
             string model = null;
             double fuelConsumption = 5;
             double fuelCapacity = 40;
-
             Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
         }
         [Test]
@@ -46,7 +45,9 @@ namespace CarManager.Tests
             string model = "aaa";
             double fuelConsumption = 5;
             double fuelCapacity = 0;
-            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+            var act = Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+            string ex = "Fuel capacity cannot be zero or negative!";
+            Assert.AreEqual(ex, act.Message);
         }
         [Test]
         public void FuelConsumptionShouldThrowArgExWhenIsZero()
@@ -55,13 +56,23 @@ namespace CarManager.Tests
             string model = "bbb";
             double fuelConsumption = 0;
             double fuelCapacity = 40;
-            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+            var act = Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+            string ex = "Fuel consumption cannot be zero or negative!";
+            Assert.AreEqual(ex, act.Message);
+
 
         }
-        [TestCase]
+        [TestCase(null,"bbb",5,200)]
+        [TestCase("", "bbb", 5, 200)]
+        [TestCase("bbb", null, 5, 200)]
+        [TestCase("bbb", "", 5, 200)]
+        [TestCase("aaa", "bbb", -5, 200)]
+        [TestCase("aaa", "bbb", 0, 200)]
+        [TestCase("aaa", "bbb", 5, -200)]
+        [TestCase("aaa", "bbb", 5, 0)]
         public void ValidateAllProperties(string make, string model, double fuelConsumption, double fuelCapacity)
         {
-            //TO DO
+            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
         }
 
 
@@ -86,7 +97,6 @@ namespace CarManager.Tests
             string model = "bbb";
             double fuelConsumption = 5;
             double fuelCapacity = 40;
-            double fuelAmount = 0;
             Car car = new Car(make, model, fuelConsumption, fuelCapacity);
             car.Refuel(fuelToRefuel);
             Assert.AreEqual(40, car.FuelAmount);
