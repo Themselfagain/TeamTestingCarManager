@@ -84,12 +84,18 @@ namespace CarManager.Tests
         {
             //TO DO
         }
-
-        [Test]
-        //TO DO
+        [TestCase (-5)]
         public void ShouldRefuelThrowArgExWhenInputAmountIsBellowZero(double inputAmount)
         {
-            //TO DO
+            string make = "aaa";
+            string model = "bbb";
+            double fuelConsumption = 20;
+            double fuelCapacity = 40;
+            double fuelAmount = 20;
+            Car car = new Car(make, model, fuelConsumption, fuelCapacity);
+            string exp = "Fuel amount cannot be zero or negative!";
+            var act = Assert.Throws<ArgumentException>(() => car.Refuel(inputAmount)) ;
+            Assert.AreEqual(exp, act.Message);
         }
 
         [Test]
