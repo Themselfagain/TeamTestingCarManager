@@ -73,7 +73,6 @@ namespace CarManager.Tests
             string model = "bbb";
             double fuelConsumption = 5;
             double fuelCapacity = 40;
-            double fuelAmount = 0;
             Car car = new Car(make, model, fuelConsumption, fuelCapacity);
             car.Refuel(fuelToRefuel);
             Assert.AreEqual(30, car.FuelAmount);
@@ -82,7 +81,15 @@ namespace CarManager.Tests
         [Test]
         public void ShouldRefuelUntillTotalFuelCapacity()
         {
-            //TO DO
+            int fuelToRefuel = 60;
+            string make = "aaa";
+            string model = "bbb";
+            double fuelConsumption = 5;
+            double fuelCapacity = 40;
+            double fuelAmount = 0;
+            Car car = new Car(make, model, fuelConsumption, fuelCapacity);
+            car.Refuel(fuelToRefuel);
+            Assert.AreEqual(40, car.FuelAmount);
         }
         [TestCase (-5)]
         public void ShouldRefuelThrowArgExWhenInputAmountIsBellowZero(double inputAmount)
