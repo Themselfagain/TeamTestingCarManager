@@ -7,12 +7,10 @@ namespace CarManager.Tests
     [TestFixture]
     public class CarTests
     {
-
         [SetUp]
         public void Setup()
         {
         }
-
         [Test]
         public void ConstructorShouldInitializeCorrectly()
         {
@@ -35,7 +33,9 @@ namespace CarManager.Tests
             string model = null;
             double fuelConsumption = 5;
             double fuelCapacity = 40;
-            Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+            var act = Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
+            string ex = "Model cannot be null or empty!";
+            Assert.AreEqual(ex, act.Message);
         }
         [Test]
         public void FuelCapacityShouldThrowArgExWhenIsZero()
@@ -74,8 +74,6 @@ namespace CarManager.Tests
         {
             Assert.Throws<ArgumentException>(() => new Car(make, model, fuelConsumption, fuelCapacity));
         }
-
-
         [Test]
         public void ShouldRefuelNormally()
         {
@@ -88,7 +86,6 @@ namespace CarManager.Tests
             car.Refuel(fuelToRefuel);
             Assert.AreEqual(30, car.FuelAmount);
         }
-
         [Test]
         public void ShouldRefuelUntillTotalFuelCapacity()
         {
@@ -114,19 +111,25 @@ namespace CarManager.Tests
             var act = Assert.Throws<ArgumentException>(() => car.Refuel(inputAmount)) ;
             Assert.AreEqual(exp, act.Message);
         }
-
         [Test]
         public void ShouldDriveNormally()
         {
             Car car = new Car("Vw", "Golf", 2, 100);
-            //TO DO
+            double distance = 100;
+            car.Refuel(100);
+            car.Drive(distance);
+            Assert.AreEqual(98, car.FuelAmount);
+
         }
 
         [Test]
         public void DriveShouldThrowInvalidOperationExceptionWhenFuelAmountIsNotEnough()
         {
-            //TO DO
+            Car car = new Car("Vw", "Golf", 5, 100);
+            double distance = 200;
+            car.Refuel(1);
+            Assert.Throws<InvalidOperationException>(() => car.Drive(distance));
+
         }
     }
-
 }
